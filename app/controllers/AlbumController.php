@@ -1,6 +1,6 @@
 <?php
 
-class LoginController extends BaseController {
+class AlbumController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -16,11 +16,29 @@ class LoginController extends BaseController {
 	*/
 	protected $layout = 'admin.base';	
 
-	public function getLogin(){
-		$this->layout->content = View::make('admin.login');
+	public function getList(){
+		$album = new Album();
+		$list = $album->all();
+		$m = 0;
+		foreach($list as $item){
+			$data[$m][] = $item;
+			if(count($data[$m])>=3){
+				$m += 1;
+			} 
+		}
+		$this->layout->content = View::make('admin.list')->with(array("list"=>$data));
 	}
 
-	public function postLogin(){
+	public function getCreate(){
+		$this->layout->content = View::make('admin.album');
+	}
+
+	public function postCreate(){
+		$album = new Album();
+		$album->title = Input::get("title");
+		$album->description = Input::get("description");
+		$album->save();
+		var_dump($album->id);exit;
 		if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password')))) {
 			return Redirect::to('admin')->with('message', '欢迎进入Marry后台管理系统!');
 		} else {
@@ -29,10 +47,7 @@ class LoginController extends BaseController {
 		}	
 	}
 
-	public function getLogout(){
-		if(Auth::check()){
-			Auth::logout();
-			return Redirect::to('login');
-		}
+	public function getUpload($aid=0){
+		$this->layout->content = View::make('admin.login');
 	}
 }

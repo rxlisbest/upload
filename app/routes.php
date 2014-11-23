@@ -17,3 +17,5 @@ Route::get('/', function()
 });
 
 Route::controller('admin', 'LoginController');
+
+Route::controller('album', 'AlbumController');
