@@ -16,6 +16,6 @@ Route::get('/', function()
 	return View::make('index');
 });
 
-Route::controller('admin', 'LoginController');
 
-Route::controller('album', 'AlbumController');
+Route::controller('admin/album', 'AlbumController');
+Route::controller('admin', 'LoginController');

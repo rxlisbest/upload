@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlbumTable extends Migration {
+class CreatePhotosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,9 +13,10 @@ class CreateAlbumTable extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('albums', function($table){
-                      	$table->increments('aid');
-			$table->string('title', 20);
+		Schema::create('photos', function($table){
+                      	$table->increments('pid');
+			$table->string('src', 255);
+			$table->integer('aid');
 			$table->text('description');
  
                      	$table->string('remember_token', 100)->nullable();

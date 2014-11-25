@@ -13,7 +13,7 @@
                     </span>
                   </div>
                   <div class="widget-body">
-              {{ Form::open(array('url'=>'album/create', 'method'=>'post', 'class'=>'form-horizontal no-margin')) }}
+              {{ Form::open(array('url'=>'/admin/album/create', 'method'=>'post', 'class'=>'form-horizontal no-margin')) }}
                       <div class="control-group">
                         <label class="control-label" for="email1">
                           相册标题

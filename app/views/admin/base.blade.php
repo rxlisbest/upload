@@ -30,6 +30,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
+    <script src="/statics/admin/js/jquery.min.js">
     </script>
     <link href="/statics/admin/icomoon/style.css" rel="stylesheet">
     <link href="/statics/admin/css/main.css" rel="stylesheet"> <!-- Important. For Theming change primary-color variable in main.css  -->
@@ -301,8 +302,6 @@
       </p>
     </footer>
     
-    <script src="/statics/admin/js/jquery.min.js">
-    </script>
     <script src="/statics/admin/js/bootstrap.js">
     </script>
     

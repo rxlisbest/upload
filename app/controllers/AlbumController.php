@@ -38,16 +38,38 @@ class AlbumController extends BaseController {
 		$album->title = Input::get("title");
 		$album->description = Input::get("description");
 		$album->save();
-		var_dump($album->id);exit;
-		if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password')))) {
-			return Redirect::to('admin')->with('message', '欢迎进入Marry后台管理系统!');
+		if ($album->id) {
+			return Redirect::to('admin/album/list');
 		} else {
 			//var_dump(Input::get());exit;
-			return Redirect::to('admin/login')->with('message', '<font color="red">用户名或密码不正确!</font>')->withInput();
+			return Redirect::to('admin/album/list');
 		}	
 	}
 
 	public function getUpload($aid=0){
-		$this->layout->content = View::make('admin.login');
+		$list = Photo::where("aid", "=", $aid)->get();
+		$photos = array();
+		$m = 0;
+		foreach($list as $item){
+			$photos[$m][] = $item;
+			if(count($photos[$m])>=3){
+				$m += 1;
+			} 
+		}
+		$this->layout->content = View::make('admin.upload')->with(array('aid'=>$aid, 'photos'=>$photos));
+	}
+	
+	public function postUpload($aid=0){
+		$path = "/var/www/php/upload/public/photos/".date("Y-m-d");
+		if(!file_exists($path)){
+			mkdir($path, 0777, true);
+		}
+		Input::file("fileList")->move($path, $filename=date("His").rand(1000,9999).rand(1000,9999).".".Input::file('fileList')->getClientOriginalExtension());
+		$src = "/photos/".date("Y-m-d")."/".$filename;
+		$photo = new Photo();
+		$photo->src = $src;
+		$photo->aid = $aid;
+		$photo->description = "";
+		$photo->save();
 	}
 }
