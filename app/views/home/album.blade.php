@@ -82,8 +82,8 @@
         <!-- 擦一擦 -->
         <!-- 蒙板背景图 -->
         <div class="m-page m-fengye" data-page-type="info_pic3" data-statics="info_pic3">
-            <div class="page-con lazy-img" data-src="/statics/album/img/home-page.png" data-position="50% 0" data-size="cover"
-                 style="background-image: url(/statics/album/img/home-page.png); background-size: cover; background-position: 50% 0;">
+            <div class="page-con lazy-img" data-src="{{ $cover? $cover->src: '/statics/album/img/home-page.png' }}" data-position="50% 0" data-size="cover"
+                 style="background-image: url({{ $cover? $cover->src: '/statics/album/img/home-page.png' }}); background-size: cover; background-position: 50% 0;">
             </div>
         </div>
         <!-- 封页 end-->

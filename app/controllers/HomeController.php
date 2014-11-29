@@ -21,8 +21,12 @@ class HomeController extends BaseController {
 	}
 	
 	public function getAlbum($aid=0){
+		$cover = Photo::whereRaw("aid=? AND cover=1", array($aid))->first();
+		if(!$cover){
+			$cover = Photo::whereRaw("aid=?", array($aid))->first();
+		}
 		$info = Album::where("aid", "=", $aid)->first();
-		$list = Photo::where("aid", "=", $aid)->get();
-		return View::make('home.album')->with(array('list'=>$list, 'info'=>$info));
+		$list = Photo::whereRaw("aid=? AND pid NOT IN (?)", array($aid, $cover? $cover->pid: 0))->get();
+		return View::make('home.album')->with(array('list'=>$list, 'info'=>$info, 'cover'=>$cover));
 	}
 }
