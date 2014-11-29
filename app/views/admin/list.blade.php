@@ -18,7 +18,14 @@
 		@foreach($three as $item)
                       <li class="span4">
                         <div class="thumbnail">
-                          <img alt="300x200" style="width: 300px; height: 200px;" src="/statics/admin/img/saturation.png">
+		    @if(count($item->photos)>0)
+			@foreach($item->photos as $p)
+                          <img alt="300x200" style="width: 300px; height: 200px;" src="{{ $p->src }}">
+			<?php break; ?>
+			@endforeach
+		    @else
+                          <img alt="300x200" style="width: 300px; height: 200px;" src="/statics/admin/img/nopic.jpg">
+		    @endif
                           <div class="caption">
                             <h3>
                               {{ $item->title }}

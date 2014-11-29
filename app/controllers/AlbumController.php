@@ -17,8 +17,7 @@ class AlbumController extends BaseController {
 	protected $layout = 'admin.base';	
 
 	public function getList(){
-		$album = new Album();
-		$list = $album->all();
+		$list = Album::with(array("photos"=>function($query){ $query->orderBy("cover", "desc"); }))->get();
 		$m = 0;
 		foreach($list as $item){
 			$data[$m][] = $item;
@@ -71,5 +70,11 @@ class AlbumController extends BaseController {
 		$photo->aid = $aid;
 		$photo->description = "";
 		$photo->save();
+	}
+
+	public function getCover($aid=0, $pid=0){
+		$affectedRows = Photo::where('aid', '=', $aid)->update(array('cover' => 0));
+		$affectedRows = Photo::where('pid', '=', $pid)->update(array('cover' => 1));
+		return Redirect::to('admin/album/upload/'.$aid);
 	}
 }

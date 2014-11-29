@@ -23,4 +23,7 @@ class Album extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 
+	public function photos(){
+		return $this->hasMany('Photo', 'aid', 'aid');
+	}
 }

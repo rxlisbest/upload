@@ -16,6 +16,12 @@ Route::group(array('before' => 'auth'), function(){
 	Route::controller('admin/album', 'AlbumController');
 	Route::get('admin/logout', 'LoginController@getLogout');
 });
+Route::get('admin', function(){
+	return Redirect::to('admin/album/list');
+});
 Route::get('admin/login', 'LoginController@getLogin');
 Route::post('admin/login', 'LoginController@postLogin');
 Route::controller('/', 'HomeController');
+Route::get('/admin', function(){
+	return Redirect::to('admin/album/list');
+});

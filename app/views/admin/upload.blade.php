@@ -27,6 +27,9 @@
 		@foreach($three as $item)
                       <li class="span4">
                         <div class="thumbnail">
+                              <a href="/admin/album/cover/{{ $item->aid }}/{{ $item->pid }}" class="btn btn-{{ $item->cover? "danger": "cover"}}">
+                                封面
+			      </a>
                           <img alt="300x200" style="width: 300px; height: 200px;" src="{{ $item->src }}">
                         </div>
                       </li>

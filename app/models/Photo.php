@@ -22,5 +22,7 @@ class Photo extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-
+	public function album(){
+		return $this->belongsTo('Album');
+	}
 }
