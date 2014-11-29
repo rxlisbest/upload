@@ -22,7 +22,7 @@ class LoginController extends BaseController {
 
 	public function postLogin(){
 		if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password')))) {
-			return Redirect::to('admin')->with('message', '欢迎进入Marry后台管理系统!');
+			return Redirect::to('admin/album/list')->with('message', '欢迎进入Marry后台管理系统!');
 		} else {
 			//var_dump(Input::get());exit;
 			return Redirect::to('admin/login')->with('message', '<font color="red">用户名或密码不正确!</font>')->withInput();
@@ -32,7 +32,7 @@ class LoginController extends BaseController {
 	public function getLogout(){
 		if(Auth::check()){
 			Auth::logout();
-			return Redirect::to('login');
+			return Redirect::to('admin/login');
 		}
 	}
 }

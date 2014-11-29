@@ -19,5 +19,10 @@ class HomeController extends BaseController {
 	{
 		return View::make('hello');
 	}
-
+	
+	public function getAlbum($aid=0){
+		$info = Album::where("aid", "=", $aid)->first();
+		$list = Photo::where("aid", "=", $aid)->get();
+		return View::make('home.album')->with(array('list'=>$list, 'info'=>$info));
+	}
 }

@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('index');
+
+Route::group(array('before' => 'auth'), function(){
+	Route::controller('admin/album', 'AlbumController');
+	Route::get('admin/logout', 'LoginController@getLogout');
 });
-
-
-Route::controller('admin/album', 'AlbumController');
-Route::controller('admin', 'LoginController');
+Route::get('admin/login', 'LoginController@getLogin');
+Route::post('admin/login', 'LoginController@postLogin');
+Route::controller('/', 'HomeController');

@@ -18,7 +18,7 @@
 		@foreach($three as $item)
                       <li class="span4">
                         <div class="thumbnail">
-                          <img alt="300x200" style="width: 300px; height: 200px;" src="img/saturation.png">
+                          <img alt="300x200" style="width: 300px; height: 200px;" src="/statics/admin/img/saturation.png">
                           <div class="caption">
                             <h3>
                               {{ $item->title }}
@@ -30,6 +30,9 @@
                               <a href="/admin/album/upload/{{ $item->aid }}" class="btn btn-info">
                                 进入相册
                               </a>
+                              <a href="/album/{{ $item->aid }}" class="btn btn-danger" target="_blank">
+                                预览 
+			      </a>
                             </p>
                           </div>
                         </div>

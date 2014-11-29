@@ -26,8 +26,8 @@
                         <font color="#3693cf">
                           Login
                         </font>
-                        <img src="img/logo1.png" alt="Logo" class="pull-right"></h3>
-                      <p>{{ Session::get("message") ?: '¿¿¿¿'}}</p>
+                        <img src="/statics/admin/img/logo1.png" alt="Logo" class="pull-right"></h3>
+                      <p>{{ Session::get("message") ?: '<font color="red">Welcome!</font>'}}</p>
                     </div>
                   </div>
                  

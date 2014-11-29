@@ -24,7 +24,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Blue Moon - Responsive Admin Dashboard
+	1024-Album Admin
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -42,18 +42,19 @@
   </head>
   <body>
     <header>
-      <a href="#" class="logo">
-        <img src="/statics/admin/images/logo.png" alt="Logo"/>
+      <a href="/admin/album/list" class="logo">
+        <img src="/statics/admin/img/logo.png" alt="Logo"/>
       </a>
       <div class="btn-group">
         <button class="btn btn-primary">
-          Srinu Baswa
+          {{ Auth::user()? Auth::user()->username: "请登陆" }}
         </button>
         <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
           <span class="caret">
           </span>
         </button>
         <ul class="dropdown-menu pull-right">
+<!--
           <li>
             <a href="#">
               Edit Profile
@@ -64,13 +65,15 @@
               Account Settings
             </a>
           </li>
+-->
           <li>
-            <a href="#">
-              Logout
+            <a href="/admin/logout">
+              登出
             </a>
           </li>
         </ul>
       </div>
+<!--
       <ul class="mini-nav">
         <li>
           <a href="#">
@@ -96,13 +99,14 @@
             </span>
           </a>
         </li>
-        
       </ul>
+-->
     </header>
     <div class="container-fluid">
       <div class="dashboard-container">
         <div class="top-nav">
           <ul>
+	<!--
             <li>
               <a href="index.html">
                 <div class="fs1" aria-hidden="true" data-icon="&#xe0a0;"></div>
@@ -163,13 +167,21 @@
                 Extras
               </a>
             </li>
+	-->
+            <li>
+              <a href="/admin/album/list">
+                <div class="fs1" aria-hidden="true" data-icon="&#xe00d;"></div>
+                相册
+              </a>
+            </li>
           </ul>
           <div class="clearfix">
           </div>
         </div>
         <div class="sub-nav">
           <ul>
-            <li><a href="" class="heading">Extras</a></li>
+            <li><a href="/admin/album/create" class="heading">新建相册</a></li>
+<!--
             <li>
               <a href="edit-profile.html" >
                 Edit profile
@@ -200,10 +212,11 @@
                 Help
               </a>
             </li>
+-->
           </ul>
           <div class="btn-group pull-right">
             <button class="btn btn-primary">
-              Main Menu
+              主菜单
             </button>
             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
               <span class="caret">
@@ -211,10 +224,11 @@
             </button>
             <ul class="dropdown-menu pull-right">
               <li>
-                <a href="index.html" data-original-title="">
-                  Dashboard
+                <a href="/admin/album/list" data-original-title="">
+                  相册
                 </a>
               </li>
+<!--
               <li>
                 <a href="forms.html" data-original-title="">
                   Forms
@@ -285,6 +299,7 @@
                   Help
                 </a>
               </li>
+-->
             </ul>
           </div>
         </div>
@@ -298,7 +313,7 @@
     </div>
     <footer>
       <p>
-        &copy; baswaAdmin 2014
+        1024 &copy; copyright 2014
       </p>
     </footer>
     
